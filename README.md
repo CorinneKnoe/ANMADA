@@ -13,7 +13,7 @@ Describes the setup of a personal data server from scratch (using [DigitalOcean]
 
 ### 1. Download code from github
 
-You can either downloade this repository via the green `Clone or Download` button at the top of the page; or use git from your local terminal via
+You can either download this repository via the green `Clone or Download` button at the top of the page; or use git from your local terminal via
 ```
 git clone https://github.com/CorinneKnoe/ANMADA.git
 ```

@@ -167,28 +167,28 @@ for N in (50,500):
 
 # In[7]:
 
+def plot_densities():
 
-fig = plt.figure(figsize=(14,4))
-fig.subplots_adjust(hspace=0.4, wspace=0.4)
-fig.suptitle("N=50", fontsize="xx-large")
-for values,j in zip(all_values[:5], range(1, 6)):
-    plt.subplot(1, 5, j)
-    plt.plot(*values);
+    fig = plt.figure(figsize=(14,4))
+    fig.subplots_adjust(hspace=0.4, wspace=0.4)
+    fig.suptitle("N=50", fontsize="xx-large")
+    for values,j in zip(all_values[:5], range(1, 6)):
+        plt.subplot(1, 5, j)
+        plt.plot(*values);
 
+    fig2 = plt.figure(figsize=(14,4))
+    fig2.subplots_adjust(hspace=0.4, wspace=0.4)
+    fig2.suptitle("N=500", fontsize="xx-large")
+    for values,j in zip(all_values[5:], range(1, 6)):
+        plt.subplot(1, 5, j)
+        plt.title("")
+        plt.plot(*values);
 
-# In[8]:
-
-
-fig2 = plt.figure(figsize=(14,4))
-fig2.subplots_adjust(hspace=0.4, wspace=0.4)
-fig2.suptitle("N=500", fontsize="xx-large")
-for values,j in zip(all_values[5:], range(1, 6)):
-    plt.subplot(1, 5, j)
-    plt.title("")
-    plt.plot(*values);
-
-    
+ 
 # this is to avoid execution when functions are
 # imported by other modules
-if __name__ == "__main__":
+def main():
     pass
+
+if __name__ == "__main__":
+    main() 
