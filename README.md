@@ -21,16 +21,6 @@ git clone https://github.com/CorinneKnoe/ANMADA.git
 
 ### 2. Python, Anaconda and Jupyter
 With Anaconda we recommend the widely used and powerful package manager for python that also includes Jupyter Notebooks (which are needed to run the code above locally).  You can download the installer for Python 3.6 [here](https://www.continuum.io/downloads).
-### 3. Install Packages
-Next, open up a new terminal (command line) and navigate to the ANMADA folder, which you downloaded in __1.__ (there should be a ﬁle named environment.yml in it). Then, run
-```
-conda env create -f environment.yml
-```
-This should create a new conda environment and install a list of packages. If you see an error in the installation process due to missing dependency, you should install missing dependency and then continue installation of required packages via:
-```
-conda env update -f environment.yml
-```
-You're now all set to open jupyter notebooks.
 
 ## Jupyter Notebooks
 
