@@ -15,7 +15,10 @@ metadata = MetaData()
 from get_quandl import codes_per_exchange
 
 def main():
-
+    """
+    Automated table creation in our sql database.
+    Creates one table for each exchange, because they use different columns
+    """
     raise Exception("the tables have already been created, don't do it again")
 
     date_today = datetime.date.today()
@@ -26,18 +29,13 @@ def main():
     engine = create_engine('mysql://root:%s@127.0.0.1/quandl_futures' % pw)
     
     # a dictionary that maps the exchange name to a list of all codes of that exch.
-    codes_per_xch = codes_per_exchange()
+    codes_per_xch = codes_per_exchange('codes.csv')
     
     for exchange, list_of_codes in codes_per_xch.items():
-        #exchange = 'EUREX'
-        
-        #list_of_codes = codes_per_xch[exchange]
-        
+       
         # we simply use the first code as a template for getting the column names
         # this assumes that the exchange is consistent in its supply of columns
         df = quandl.get(list_of_codes[0], start_date="1960-01-03", end_date=date_today)
-        
-        #columns = [column for column in df.columns]
         
         finance = Table(exchange, metadata,
                     Column('Id', Integer, primary_key=True),
