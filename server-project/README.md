@@ -13,3 +13,5 @@ First, have a look at the [server_setup_documentation](https://github.com/Corinn
 After all of this, our database looks like the following:
 
 [Image](https://github.com/CorinneKnoe/ANMADA/blob/master/server-project/screenshots/tables.png)
+
+On a second server, we set up a cron demon that pulls the future data daily (at a set time on weekdays) and stores it in the respective table. 
