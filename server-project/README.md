@@ -11,4 +11,5 @@ First, have a look at the [server_setup_documentation](https://github.com/Corinn
 [quandl_write](https://github.com/CorinneKnoe/ANMADA/blob/master/server-project/quandl_write.py) is the heart of our project. It loops through all 15 exchanges, and for each pulls the data from Quandl and writes it directly into the SQL database on our server. 
 
 After all of this, our database looks like the following:
-[Image](screenshots/tables.png)
+
+[Image](https://github.com/CorinneKnoe/ANMADA/blob/master/server-project/screenshots/tables.png)
