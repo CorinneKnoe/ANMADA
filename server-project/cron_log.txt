@@ -1,0 +1,63 @@
+Successfully written CHRIS/SGX_FB1 to quandl_futures
+
+Successfully written CHRIS/SGX_CFF1 to quandl_futures
+
+Successfully written CHRIS/CBOE_OV1 to quandl_futures
+
+Successfully written CHRIS/CBOE_OV2 to quandl_futures
+
+Successfully written CHRIS/ODE_YC1 to quandl_futures
+
+Successfully written CHRIS/ODE_YC3 to quandl_futures
+
+Successfully written CHRIS/ICE_B11 to quandl_futures
+
+Successfully written CHRIS/ICE_B13 to quandl_futures
+
+Successfully written CHRIS/CME_KW2 to quandl_futures
+
+Successfully written CHRIS/CME_KW4 to quandl_futures
+
+Successfully written CHRIS/ASX_UB1 to quandl_futures
+
+Successfully written CHRIS/ASX_UB3 to quandl_futures
+
+Successfully written CHRIS/EUREX_FEUA1 to quandl_futures
+
+Successfully written CHRIS/EUREX_F2CR1 to quandl_futures
+
+Successfully written CHRIS/LIFFE_EMA2 to quandl_futures
+
+Successfully written CHRIS/LIFFE_EMA1 to quandl_futures
+
+Successfully written CHRIS/HKEX_HSI1 to quandl_futures
+
+Successfully written CHRIS/HKEX_HSI2 to quandl_futures
+
+Successfully written CHRIS/MGEX_MW1 to quandl_futures
+
+Successfully written CHRIS/MGEX_MW2 to quandl_futures
+
+Successfully written CHRIS/TFX_JBA1 to quandl_futures
+
+Successfully written CHRIS/TFX_JBA2 to quandl_futures
+
+Successfully written CHRIS/MCX_CL2 to quandl_futures
+
+Successfully written CHRIS/MCX_NG2 to quandl_futures
+
+Successfully written CHRIS/OSE_DJIA2 to quandl_futures
+
+Successfully written CHRIS/OSE_DJIA3 to quandl_futures
+
+Successfully written CHRIS/MX_SCF1 to quandl_futures
+
+Successfully written CHRIS/MX_SCF2 to quandl_futures
+
+Successfully written CHRIS/SHFE_FU1 to quandl_futures
+
+Successfully written CHRIS/SHFE_FU2 to quandl_futures
+
+Done
+Omitted 0 rows
+~                                                                                                                    ~                                                                                                                    ~                       
