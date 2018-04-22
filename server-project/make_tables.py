@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 from sqlalchemy import DateTime, Table, Column, Integer, Float, String, MetaData, ForeignKey
 metadata = MetaData()
 
-from get_quandl import codes_per_exchange
+from sort_codes import codes_per_exchange
 
 def main():
     """

@@ -9,7 +9,7 @@ import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy import Table, Column, Integer, Float, String, MetaData, ForeignKey
 
-from get_quandl import codes_per_exchange
+from sort_codes import codes_per_exchange
 
 date_today = datetime.date.today()
 
