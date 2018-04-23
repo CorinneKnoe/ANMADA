@@ -14,7 +14,15 @@ from sort_codes import codes_per_exchange
 date_today = datetime.date.today()
 
 def main():
+    """
+    Pulls futures data from Quandl and writes it to the corresponding local
+    mysql database table.
 
+    Requires:
+        existing local mysql database named "quandl_futures" .
+        Existing tables with named after the 15 futures exchanges listed by Quandl.
+        the tables should first be created by the code in "make_tables.py"
+    """
     # get the necessary information from user 
     quandl.ApiConfig.api_key = raw_input("quandl API Key: ") 
 
@@ -54,6 +62,8 @@ def main():
                 print("\nSuccessfully written %s to quandl_futures" % code)
 
             # if we get an error from sqlalchemy, we simply ignore it 
+            # this is a bit hacky, but sometimes the column strucutre even inside
+            # of one exchange does not match.
             except sqlalchemy.exc.OperationalError:
                 omitted_rows += len(df)
                 print("\nOmitted " + code) 
