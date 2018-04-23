@@ -6,7 +6,6 @@ import pandas as pd
 
 import quandl
 import getpass
-quandl.ApiConfig.api_key = 'YOUR-QUANDL-API-KEY'
 
 import sqlalchemy
 from sqlalchemy import create_engine
@@ -24,8 +23,11 @@ def main():
     #raise Exception("the tables have already been created, don't do it again")
 
     date_today = datetime.date.today()
-    
-    user = input("Mysql Username: ")
+
+    API_KEY = raw_input("quandl API Key: ")
+    quandl.ApiConfig.api_key = API_KEY 
+
+    user = raw_input("Mysql Username: ")
     pw = getpass.getpass()
     
     engine = create_engine('mysql://%s:%s@127.0.0.1/quandl_futures' % (user, pw))

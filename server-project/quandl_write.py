@@ -1,9 +1,9 @@
 import datetime
 import time
+import getpass
 
 import pandas as pd
 import quandl
-quandl.ApiConfig.api_key = 'YOUR-QUANDL-API-KEY'
 
 import sqlalchemy
 from sqlalchemy import create_engine
@@ -13,16 +13,17 @@ from sort_codes import codes_per_exchange
 
 date_today = datetime.date.today()
 
-# we read a password for the mysql server from a file, so we don't have to include it in
-# the code. this requires a file named ".pw" to be in the same directory as this code 
-with open(".pw", "r") as file:
-    pw = file.read().strip("\n")
-
 def main():
+
+    # get the necessary information from user 
+    quandl.ApiConfig.api_key = raw_input("quandl API Key: ") 
+
+    user = raw_input("Mysql Username: ")
+    pw = getpass.getpass()
     
     #sqlalchemy uses an engine object to connect to a specific database
-    engine = create_engine('mysql://root:%s@127.0.0.1/quandl_futures' % pw)
-
+    engine = create_engine('mysql://%s:%s@127.0.0.1/quandl_futures' % (user, pw))
+   
     codes_per_xch = codes_per_exchange('codes.csv')
     
     omitted_rows = 0

@@ -3,7 +3,6 @@ import time
 
 import pandas as pd
 import quandl
-quandl.ApiConfig.api_key = 'YOUR-QUANDL-API-KEY'
 
 import sqlalchemy
 from sqlalchemy import create_engine
@@ -14,13 +13,18 @@ from get_quandl import codes_per_exchange
 date_today = datetime.date.today()
 date_yesterday = datetime.date.today() - datetime.timedelta(5)
 
-#with open(".pw", "r") as file:
- #   pw = file.read().strip("\n")
 
+quandl.ApiConfig.api_key = 'YOUR-QUANDL-API-KEY'
+
+mysql_username = "root"
+
+# we read the password from a local file named ".pw"
+with open(".pw", "r") as file:
+    mysql_password = file.read().strip("\n")
 
 def main():
 
-    engine = create_engine('mysql://root:MfLigRs$1901@127.0.0.1/quandl_futures')
+    engine = create_engine('mysql://%s:%s@127.0.0.1/quandl_futures' % (mysql_username, mysql_password))
 
     codes_per_xch = codes_per_exchange()
 
