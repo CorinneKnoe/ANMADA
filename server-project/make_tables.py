@@ -5,7 +5,8 @@ import numpy as np
 import pandas as pd
 
 import quandl
-quandl.ApiConfig.api_key = 'V_Wjo3oPLtefuTGpZgdF'
+import getpass
+quandl.ApiConfig.api_key = 'YOUR-QUANDL-API-KEY'
 
 import sqlalchemy
 from sqlalchemy import create_engine
@@ -17,16 +18,17 @@ from sort_codes import codes_per_exchange
 def main():
     """
     Automated table creation in our sql database.
+    Needs to be executed on the server where the mysql database is.
     Creates one table for each exchange, because they use different columns
     """
-    raise Exception("the tables have already been created, don't do it again")
+    #raise Exception("the tables have already been created, don't do it again")
 
     date_today = datetime.date.today()
     
-    with open(".pw", "r") as file:
-        pw = file.read().strip("\n")
+    user = input("Mysql Username: ")
+    pw = getpass.getpass()
     
-    engine = create_engine('mysql://root:%s@127.0.0.1/quandl_futures' % pw)
+    engine = create_engine('mysql://%s:%s@127.0.0.1/quandl_futures' % (user, pw))
     
     # a dictionary that maps the exchange name to a list of all codes of that exch.
     codes_per_xch = codes_per_exchange('codes.csv')

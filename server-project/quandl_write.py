@@ -3,7 +3,7 @@ import time
 
 import pandas as pd
 import quandl
-quandl.ApiConfig.api_key = 'V_Wjo3oPLtefuTGpZgdF'
+quandl.ApiConfig.api_key = 'YOUR-QUANDL-API-KEY'
 
 import sqlalchemy
 from sqlalchemy import create_engine
