@@ -1,9 +1,9 @@
 import datetime
 import time
+import getpass
 
 import pandas as pd
 import quandl
-quandl.ApiConfig.api_key = 'V_Wjo3oPLtefuTGpZgdF'
 
 import sqlalchemy
 from sqlalchemy import create_engine
@@ -13,16 +13,25 @@ from sort_codes import codes_per_exchange
 
 date_today = datetime.date.today()
 
-# we read a password for the mysql server from a file, so we don't have to include it in
-# the code. this requires a file named ".pw" to be in the same directory as this code 
-with open(".pw", "r") as file:
-    pw = file.read().strip("\n")
-
 def main():
+    """
+    Pulls futures data from Quandl and writes it to the corresponding local
+    mysql database table.
+
+    Requires:
+        existing local mysql database named "quandl_futures" .
+        Existing tables with named after the 15 futures exchanges listed by Quandl.
+        the tables should first be created by the code in "make_tables.py"
+    """
+    # get the necessary information from user 
+    quandl.ApiConfig.api_key = raw_input("quandl API Key: ") 
+
+    user = raw_input("Mysql Username: ")
+    pw = getpass.getpass()
     
     #sqlalchemy uses an engine object to connect to a specific database
-    engine = create_engine('mysql://root:%s@127.0.0.1/quandl_futures' % pw)
-
+    engine = create_engine('mysql://%s:%s@127.0.0.1/quandl_futures' % (user, pw))
+   
     codes_per_xch = codes_per_exchange('codes.csv')
     
     omitted_rows = 0
@@ -53,6 +62,8 @@ def main():
                 print("\nSuccessfully written %s to quandl_futures" % code)
 
             # if we get an error from sqlalchemy, we simply ignore it 
+            # this is a bit hacky, but sometimes the column strucutre even inside
+            # of one exchange does not match.
             except sqlalchemy.exc.OperationalError:
                 omitted_rows += len(df)
                 print("\nOmitted " + code) 

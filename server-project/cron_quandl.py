@@ -3,9 +3,6 @@ import time
 
 import pandas as pd
 import quandl
-quandl.ApiConfig.api_key = 'YLoS64Uexz7u4-saLZXj'
-
-
 
 import sqlalchemy
 from sqlalchemy import create_engine
@@ -16,13 +13,18 @@ from get_quandl import codes_per_exchange
 date_today = datetime.date.today()
 date_yesterday = datetime.date.today() - datetime.timedelta(5)
 
-#with open(".pw", "r") as file:
- #   pw = file.read().strip("\n")
 
+quandl.ApiConfig.api_key = 'YOUR-QUANDL-API-KEY'
+
+mysql_username = "root"
+
+# we read the password from a local file named ".pw"
+with open(".pw", "r") as file:
+    mysql_password = file.read().strip("\n")
 
 def main():
 
-    engine = create_engine('mysql://root:MfLigRs$1901@127.0.0.1/quandl_futures')
+    engine = create_engine('mysql://%s:%s@127.0.0.1/quandl_futures' % (mysql_username, mysql_password))
 
     codes_per_xch = codes_per_exchange()
 
@@ -49,31 +51,6 @@ def main():
 
     print("\nDone")
     print("Omitted %i rows" % omitted_rows)
-
-#def main():
-#    omitted_rows = 0
-#    engine = create_engine('mysql://root:%s@127.0.0.1/quandl_futures' % pw)
-#
-#    codes_per_xch = codes_per_exchange()
-#
-#    exchange = 'ICE'
-#    list_of_codes = codes_per_xch[exchange]
-#    for k in [197,203]:
-#        # 197 and 203
-#        code = list_of_codes[k]
-#
-#        df = quandl.get(code, start_date="1960-01-03", end_date=date_today)
-#        df.reset_index(inplace=True)
-#        df.rename(index=str, columns={"Trade Date":"Date"}, inplace=True)
-#        df.insert(0,'Code', [code[6:] for i in range(len(df))])
-#        try:
-#            df.to_sql(exchange, engine, if_exists='append', index=False)
-#        except sqlalchemy.exc.OperationalError:
-#            omitted_rows += len(df)
-#            print("\nOmitted " + code)
-#            continue
-#
-#        print("\nSuccessfully written %s to quandl_futures" % code)
 
 if __name__ == '__main__':
     main()

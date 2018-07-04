@@ -58,11 +58,7 @@ def codes_per_exchange(filename):
     #print(len(list_of_exchanges))
     # 15
     
-    ##### initial data exploration #####
-    
-    # list all column headers of the different exchanges
-    
-    # first, sort the codes per exchange
+    # sort the codes per exchange
     # we use a dictionary here which maps the exchange name to a list of all codes
     # belonging to that exchange
     codes_per_xch = {exchange : [] for exchange in list_of_exchanges} 
